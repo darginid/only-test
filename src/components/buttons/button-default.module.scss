@@ -1,0 +1,113 @@
+@use 'assets/styles/abstracts/variables/fonts' as *;
+@use 'assets/styles/abstracts/variables/colors' as *;
+@use 'assets/styles/abstracts/variables/media-queries' as *;
+@use 'assets/styles/abstracts/variables/z-index' as *;
+@use 'assets/styles/keyframes' as *;
+
+@keyframes tab-appearance {
+  from {
+    padding: 3px;
+    font-size: 0;
+    background-color: $primary-1;
+  }
+
+  to {
+    padding: 16px 22px;
+    font-size: $size-text-large;
+    background-color: $primary-neutral-100;
+  }
+}
+
+%appearance {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba($color: $primary-1, $alpha: 0.5);
+  background-color: $primary-neutral-100;
+  user-select: none;
+}
+
+%active-label {
+  @extend %appearance;
+  padding: 16px 22px;
+  margin: 0;
+  font-size: $size-text-large;
+  color: $primary-1;
+}
+
+// RADIO
+.radio {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+}
+
+.input {
+  position: absolute;
+  z-index: $not-visible-0;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+
+  &:hover {
+    & + .label {
+      @extend %active-label;
+    }
+  }
+
+  &:checked {
+    & + .label {
+      @extend %active-label;
+      animation: tab-appearance 0.65s ease-out;
+
+      & + h3 {
+        visibility: visible;
+        opacity: 1;
+        animation: make-visible 1.3s ease-out;
+      }
+    }
+  }
+}
+
+.label {
+  display: inline-block;
+  padding: 3px;
+  font-size: 0;
+  background-color: $primary-1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+
+  & + h3 {
+    position: absolute;
+    left: 78px;
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+// BUTTON
+.button {
+  @extend %appearance;
+  width: 50px;
+  height: 50px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  @media screen and (max-width: $tablet-album-orientation) {
+    width: 25px;
+    height: 25px;
+
+    svg {
+      width: 5.12px;
+      height: 7.25px;
+    }
+  }
+}

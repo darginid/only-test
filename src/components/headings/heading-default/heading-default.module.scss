@@ -1,0 +1,46 @@
+@use 'assets/styles/abstracts/variables/fonts' as *;
+@use 'assets/styles/abstracts/variables/colors' as *;
+@use 'assets/styles/abstracts/variables/media-queries' as *;
+@use 'assets/styles/abstracts/functions' as *;
+
+// TYPES
+.section {
+  @extend %text-size-large;
+  font-weight: 700;
+
+  @media screen and (max-width: calc($tablet-album-orientation - 1px)) {
+    font-size: calc-fluid-element(
+      calc($size-text-medium * 10),
+      calc($size-text-large * 10),
+      $mobile-extra-small,
+      $tablet-album-orientation
+    );
+  }
+}
+
+.paragraph {
+  font-family: 'Bebas Neue';
+  @extend %heading-size-small;
+
+  @media screen and (max-width: calc($desktop-extra-large - 1px)) {
+    font-size: calc-fluid-element(
+      calc($size-text-medium * 10),
+      calc($size-heading-3 * 10),
+      $mobile-extra-small,
+      $desktop-extra-large
+    );
+  }
+}
+
+// COLORS
+.darkBlue {
+  color: $primary-1;
+}
+
+.lightBlue {
+  color: $brand-2;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

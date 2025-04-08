@@ -1,0 +1,28 @@
+@use 'assets/styles/abstracts/variables/fonts' as *;
+@use 'assets/styles/abstracts/variables/colors' as *;
+@use 'assets/styles/abstracts/mixins' as *;
+
+$diameter: 530px;
+$btn-size: 56px;
+
+.circle {
+  width: $diameter;
+  height: $diameter;
+  border: 1px solid rgba($color: $primary-1, $alpha: 0.2);
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: transform 0.6s ease-in;
+}
+
+.tabs {
+  position: relative;
+
+  > * {
+    $item-size: 56px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -(calc($item-size / 2));
+  }
+}

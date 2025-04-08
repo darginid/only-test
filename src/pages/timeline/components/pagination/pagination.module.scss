@@ -1,0 +1,12 @@
+@use 'assets/styles/abstracts/variables/media-queries' as *;
+@use 'assets/styles/abstracts/functions' as *;
+
+.bullets {
+  display: none;
+  column-gap: 10px;
+
+  @media screen and (max-width: $tablet-album-orientation) {
+    display: flex;
+    margin-top: 8px;
+  }
+}
